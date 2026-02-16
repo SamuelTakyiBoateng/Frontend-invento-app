@@ -1,8 +1,12 @@
-import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
 export interface AuthUser {
     username: string;
     token: string;
 }
 
-export const authAtom = atom <AuthUser | null>(null);
+
+export const authAtom = atomWithStorage<AuthUser> ("auth", {
+    username : "",
+    token: ""
+})
